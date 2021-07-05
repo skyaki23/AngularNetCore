@@ -1,1 +1,30 @@
-<p>list-items works!</p>
+<div class="row mt-3">
+    <div class="col-lg-12">
+        <h3 style="text-align: center;">筆記型電腦產品列表</h3>
+    </div>
+</div>
+
+<table class="table table-hover mt-3">
+    <thead>
+        <tr>
+            <td>廠牌</td>
+            <td>處理器</td>
+            <td>記憶體</td>
+            <td>硬碟</td>
+            <td>顯示卡</td>
+            <td>螢幕尺寸</td>
+            <td>價錢</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of listItems">
+            <td>{{ item.brand }}</td>
+            <td>{{ item.processor }}</td>
+            <td>{{ item.mainMemory }}</td>
+            <td>{{ item.hardDrive }}</td>
+            <td>{{ item.graphicsCard }}</td>
+            <td>{{ item.screenSize }}</td>
+            <td>{{ item.price }}</td>
+        </tr>
+    </tbody>
+</table>
