@@ -4,7 +4,7 @@
     </div>
 </div>
 
-<table class="table table-hover mt-3">
+<table *ngIf="listItems.length > 0" class="table table-hover mt-3">
     <thead>
         <tr>
             <td>廠牌</td>
@@ -28,3 +28,7 @@
         </tr>
     </tbody>
 </table>
+
+<div *ngIf="listItems.length == 0" class="row mt-5">
+    <h5>尚無建立產品資料</h5>
+</div>
