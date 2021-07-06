@@ -14,6 +14,8 @@
             <td>顯示卡</td>
             <td>螢幕尺寸</td>
             <td>價錢</td>
+            <td></td>
+            <td></td>
         </tr>
     </thead>
     <tbody>
@@ -25,6 +27,12 @@
             <td>{{ item.graphicsCard }}</td>
             <td>{{ item.screenSize }}</td>
             <td>{{ item.price }}</td>
+            <td style="width: 5%;">
+                <button class="btn btn-primary btn-sm float-end">修改</button>
+            </td>
+            <td style="width: 5%;">
+                <button class="btn btn-danger btn-sm float-end">刪除</button>
+            </td>
         </tr>
     </tbody>
 </table>
