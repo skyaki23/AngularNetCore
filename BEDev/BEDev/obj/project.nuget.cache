@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "46m+fHMSQX4Y3QZoonDTkaf8J9ZJ5Eep7a3DRuF6g3URhpGIMH43p4Ze8X2OJKSONN49IGhAO17VDUdpVFUtkQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\klgar\\source\\repos\\Angular_NetCore_SQLServer_Project\\BEDev\\BEDev\\BEDev.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\klgar\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\klgar\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\klgar\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
+    "C:\\Users\\klgar\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\5.6.3\\swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
+    "C:\\Users\\klgar\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
+    "C:\\Users\\klgar\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512"
+  ],
+  "logs": []
+}
