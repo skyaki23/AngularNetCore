@@ -2,32 +2,53 @@
 <form [formGroup]="createItem" (ngSubmit)="create()">
     <div class="mb-3">
         <label for="brand" class="form-label">廠牌</label>
-        <input formControlName="brand" type="text" class="form-control" id="brand">
+        <input formControlName="brand" type="text" class="form-control" id="brand" autocomplete="off">
+        <span *ngIf="createItem.get('brand')?.invalid && createItem.get('brand')?.touched" class="text-danger">
+            <strong>廠牌</strong>尚未填寫
+        </span>
     </div>
     <div class="mb-3">
         <label for="processor" class="form-label">處理器</label>
-        <input formControlName="processor" type="text" class="form-control" id="processor">
+        <input formControlName="processor" type="text" class="form-control" id="processor" autocomplete="off">
+        <span *ngIf="createItem.get('processor')?.invalid && createItem.get('processor')?.touched" class="text-danger">
+            <strong>處理器</strong>尚未填寫
+        </span>
     </div>
     <div class="mb-3">
         <label for="mainMemory" class="form-label">記憶體</label>
-        <input formControlName="mainMemory" type="text" class="form-control" id="mainMemory">
+        <input formControlName="mainMemory" type="text" class="form-control" id="mainMemory" autocomplete="off">
+        <span *ngIf="createItem.get('mainMemory')?.invalid && createItem.get('mainMemory')?.touched" class="text-danger">
+            <strong>記憶體</strong>尚未填寫
+        </span>
     </div>
     <div class="mb-3">
         <label for="hardDrive" class="form-label">硬碟</label>
-        <input formControlName="hardDrive" type="text" class="form-control" id="hardDrive">
+        <input formControlName="hardDrive" type="text" class="form-control" id="hardDrive" autocomplete="off">
+        <span *ngIf="createItem.get('hardDrive')?.invalid && createItem.get('hardDrive')?.touched" class="text-danger">
+            <strong>硬碟</strong>尚未填寫
+        </span>
     </div>
     <div class="mb-3">
         <label for="graphicsCard" class="form-label">顯示卡</label>
-        <input formControlName="graphicsCard" type="text" class="form-control" id="graphicsCard">
+        <input formControlName="graphicsCard" type="text" class="form-control" id="graphicsCard" autocomplete="off">
+        <span *ngIf="createItem.get('graphicsCard')?.invalid && createItem.get('graphicsCard')?.touched" class="text-danger">
+            <strong>顯示卡</strong>尚未填寫
+        </span>
     </div>
     <div class="mb-3">
         <label for="screenSize" class="form-label">螢幕尺寸</label>
-        <input formControlName="screenSize" type="text" class="form-control" id="screenSize">
+        <input formControlName="screenSize" type="text" class="form-control" id="screenSize" autocomplete="off">
+        <span *ngIf="createItem.get('screenSize')?.invalid && createItem.get('screenSize')?.touched" class="text-danger">
+            <strong>螢幕尺寸</strong>尚未填寫
+        </span>
     </div>
     <div class="mb-3">
         <label for="price" class="form-label">價錢</label>
-        <input formControlName="price" type="text" class="form-control" id="price">
+        <input formControlName="price" type="text" class="form-control" id="price" autocomplete="off">
+        <span *ngIf="createItem.get('price')?.invalid && createItem.get('price')?.touched" class="text-danger">
+            <strong>價錢</strong>尚未填寫
+        </span>
     </div>
-    <button type="submit" class="btn btn-primary float-end">確認新增</button>
+    <button type="submit" [disabled]="createItem.invalid" class="btn btn-primary float-end">確認新增</button>
     <button type="button" routerLink="/" class="btn btn-secondary">返回</button>
 </form>
