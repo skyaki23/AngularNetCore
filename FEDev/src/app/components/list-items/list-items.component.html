@@ -10,7 +10,7 @@
 <table *ngIf="listItems.length > 0" class="table table-hover mt-3">
     <thead>
         <tr>
-            <td>廠牌</td>
+            <td>廠牌名稱</td>
             <td>處理器</td>
             <td>記憶體</td>
             <td>硬碟</td>
@@ -23,7 +23,7 @@
     </thead>
     <tbody>
         <tr *ngFor="let item of listItems">
-            <td>{{ item.brand }}</td>
+            <td>{{ item.brandName }}</td>
             <td>{{ item.processor }}</td>
             <td>{{ item.mainMemory }}</td>
             <td>{{ item.hardDrive }}</td>

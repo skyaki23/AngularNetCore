@@ -1,10 +1,10 @@
 <h3 class="mt-3">新增產品</h3>
 <form [formGroup]="createItem" (ngSubmit)="create()">
     <div class="mb-3">
-        <label for="brand" class="form-label">廠牌</label>
-        <input formControlName="brand" type="text" class="form-control" id="brand" autocomplete="off">
-        <span *ngIf="createItem.get('brand')?.invalid && createItem.get('brand')?.touched" class="text-danger">
-            <strong>廠牌</strong>尚未填寫
+        <label for="brandName" class="form-label">廠牌名稱</label>
+        <input formControlName="brandName" type="text" class="form-control" id="brandName" autocomplete="off">
+        <span *ngIf="createItem.get('brandName')?.invalid && createItem.get('brandName')?.touched" class="text-danger">
+            <strong>廠牌名稱</strong>尚未填寫
         </span>
     </div>
     <div class="mb-3">

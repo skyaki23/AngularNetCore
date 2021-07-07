@@ -13,7 +13,7 @@ export class CreateUpdateItemComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.createItem = this.fb.group({
-      brand: ['', Validators.required],
+      brandName: ['', Validators.required],
       processor: ['', Validators.required],
       mainMemory: ['', Validators.required],
       hardDrive: ['', Validators.required],
@@ -30,7 +30,7 @@ export class CreateUpdateItemComponent implements OnInit {
     console.log(this.createItem);
 
     const item: Item = {
-      brand: this.createItem.get('brand')?.value,
+      brandName: this.createItem.get('brandName')?.value,
       processor: this.createItem.get('processor')?.value,
       mainMemory: this.createItem.get('mainMemory')?.value,
       hardDrive: this.createItem.get('hardDrive')?.value,

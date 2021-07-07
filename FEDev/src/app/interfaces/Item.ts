@@ -1,6 +1,6 @@
 export interface Item {
     id?: number;
-    brand?: string;
+    brandName?: string;
     processor?: string;
     mainMemory?: string;
     hardDrive?: string;
