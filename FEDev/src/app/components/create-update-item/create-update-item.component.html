@@ -1,33 +1,33 @@
 <h3 class="mt-3">新增產品</h3>
-<form>
+<form [formGroup]="createItem" (ngSubmit)="create()">
     <div class="mb-3">
         <label for="brand" class="form-label">廠牌</label>
-        <input type="text" class="form-control" id="brand">
+        <input formControlName="brand" type="text" class="form-control" id="brand">
     </div>
     <div class="mb-3">
         <label for="processor" class="form-label">處理器</label>
-        <input type="text" class="form-control" id="processor">
+        <input formControlName="processor" type="text" class="form-control" id="processor">
     </div>
     <div class="mb-3">
         <label for="mainMemory" class="form-label">記憶體</label>
-        <input type="text" class="form-control" id="mainMemory">
+        <input formControlName="mainMemory" type="text" class="form-control" id="mainMemory">
     </div>
     <div class="mb-3">
         <label for="hardDrive" class="form-label">硬碟</label>
-        <input type="text" class="form-control" id="hardDrive">
+        <input formControlName="hardDrive" type="text" class="form-control" id="hardDrive">
     </div>
     <div class="mb-3">
         <label for="graphicsCard" class="form-label">顯示卡</label>
-        <input type="text" class="form-control" id="graphicsCard">
+        <input formControlName="graphicsCard" type="text" class="form-control" id="graphicsCard">
     </div>
     <div class="mb-3">
         <label for="screenSize" class="form-label">螢幕尺寸</label>
-        <input type="text" class="form-control" id="screenSize">
+        <input formControlName="screenSize" type="text" class="form-control" id="screenSize">
     </div>
     <div class="mb-3">
         <label for="price" class="form-label">價錢</label>
-        <input type="text" class="form-control" id="price">
+        <input formControlName="price" type="text" class="form-control" id="price">
     </div>
-    <button class="btn btn-primary float-end">確認新增</button>
-    <button routerLink="/" class="btn btn-secondary">返回</button>
+    <button type="submit" class="btn btn-primary float-end">確認新增</button>
+    <button type="button" routerLink="/" class="btn btn-secondary">返回</button>
 </form>
