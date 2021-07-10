@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Item } from 'src/app/interfaces/Item';
 import { ItemService } from 'src/app/services/item.service';
@@ -21,6 +22,17 @@ export class ListItemsComponent implements OnInit {
     this._itemService.getListItems().subscribe(
       data => {
         this.listItems = data;
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  deleteItem(id: any) {
+    this._itemService.deleteItem(id).subscribe(
+      data => {
+        this.getItems();
       },
       error => {
         console.log(error);
