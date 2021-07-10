@@ -37,32 +37,13 @@ export class CreateUpdateItemComponent implements OnInit {
     this.update();
   }
 
-  create() {
-    const item: Item = {
-      brandName: this.createItem.get('brandName')?.value,
-      processor: this.createItem.get('processor')?.value,
-      mainMemory: this.createItem.get('mainMemory')?.value,
-      hardDrive: this.createItem.get('hardDrive')?.value,
-      graphicsCard: this.createItem.get('graphicsCard')?.value,
-      screenSize: this.createItem.get('screenSize')?.value,
-      price: this.createItem.get('price')?.value
-    };
-
-    this._itemService.createItem(item).subscribe(
-      data => {
-        this.router.navigate(['/']);
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
-
   update() {
     if (this.id !== 0) {
       this.action = '修改產品';
       this._itemService.getItem(this.id).subscribe(
         data => {
+          this.item = data; // 將data給變數item
+
           this.createItem.patchValue({
             brandName: data.brandName,
             processor: data.processor,
@@ -79,4 +60,51 @@ export class CreateUpdateItemComponent implements OnInit {
       );
     }
   }
+
+  createUpdateItem() {
+    if (this.item == undefined) {
+      //新增產品
+      const item: Item = {
+        brandName: this.createItem.get('brandName')?.value,
+        processor: this.createItem.get('processor')?.value,
+        mainMemory: this.createItem.get('mainMemory')?.value,
+        hardDrive: this.createItem.get('hardDrive')?.value,
+        graphicsCard: this.createItem.get('graphicsCard')?.value,
+        screenSize: this.createItem.get('screenSize')?.value,
+        price: this.createItem.get('price')?.value
+      };
+  
+      this._itemService.createItem(item).subscribe(
+        data => {
+          this.router.navigate(['/']);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
+    else {
+      //修改產品
+      const item: Item = {
+        id: this.item.id,
+        brandName: this.createItem.get('brandName')?.value,
+        processor: this.createItem.get('processor')?.value,
+        mainMemory: this.createItem.get('mainMemory')?.value,
+        hardDrive: this.createItem.get('hardDrive')?.value,
+        graphicsCard: this.createItem.get('graphicsCard')?.value,
+        screenSize: this.createItem.get('screenSize')?.value,
+        price: this.createItem.get('price')?.value
+      };
+
+      this._itemService.updateItem(this.id, item).subscribe(
+        data => {
+          this.router.navigate(['/']);
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
+  }
+
 }

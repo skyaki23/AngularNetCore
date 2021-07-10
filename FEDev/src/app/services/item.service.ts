@@ -28,4 +28,8 @@ export class ItemService {
   createItem(item: Item): Observable<any> {
     return this.http.post(this.baseURL + this.baseApiURL, item);
   }
+
+  updateItem(id: number, item: Item): Observable<any> {
+    return this.http.put(this.baseURL + this.baseApiURL + id, item);
+  }
 }
