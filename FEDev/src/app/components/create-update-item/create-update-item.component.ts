@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Item } from 'src/app/interfaces/Item';
+import { ItemService } from 'src/app/services/item.service';
 
 @Component({
   selector: 'app-create-update-item',
@@ -11,7 +13,9 @@ export class CreateUpdateItemComponent implements OnInit {
 
   createItem: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,
+              private _itemService: ItemService,
+              private router: Router) {
     this.createItem = this.fb.group({
       brandName: ['', Validators.required],
       processor: ['', Validators.required],
@@ -27,8 +31,6 @@ export class CreateUpdateItemComponent implements OnInit {
   }
 
   create() {
-    console.log(this.createItem);
-
     const item: Item = {
       brandName: this.createItem.get('brandName')?.value,
       processor: this.createItem.get('processor')?.value,
@@ -39,6 +41,13 @@ export class CreateUpdateItemComponent implements OnInit {
       price: this.createItem.get('price')?.value
     };
 
-    console.log(item);
+    this._itemService.createItem(item).subscribe(
+      data => {
+        this.router.navigate(['/']);
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 }

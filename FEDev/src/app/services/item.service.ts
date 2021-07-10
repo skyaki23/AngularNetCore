@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Item } from '../interfaces/Item';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,9 @@ export class ItemService {
 
   getItem(id: number): Observable<any> {
     return this.http.get(this.baseURL + this.baseApiURL + id);
+  }
+
+  createItem(item: Item): Observable<any> {
+    return this.http.post(this.baseURL + this.baseApiURL, item);
   }
 }
