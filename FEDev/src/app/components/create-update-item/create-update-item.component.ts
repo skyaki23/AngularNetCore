@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Item } from 'src/app/interfaces/Item';
 import { ItemService } from 'src/app/services/item.service';
 
@@ -19,7 +20,8 @@ export class CreateUpdateItemComponent implements OnInit {
   constructor(private fb: FormBuilder,
               private _itemService: ItemService,
               private router: Router,
-              private aRoute: ActivatedRoute) {
+              private aRoute: ActivatedRoute,
+              private toastr: ToastrService) {
     this.createItem = this.fb.group({
       brandName: ['', Validators.required],
       processor: ['', Validators.required],
@@ -76,9 +78,11 @@ export class CreateUpdateItemComponent implements OnInit {
   
       this._itemService.createItem(item).subscribe(
         data => {
+          this.toastr.success('產品: ' + item.brandName + ' 已新增', '新增成功');
           this.router.navigate(['/']);
         },
         error => {
+          this.toastr.error('發生錯誤', '錯誤');
           console.log(error);
         }
       );
@@ -98,9 +102,11 @@ export class CreateUpdateItemComponent implements OnInit {
 
       this._itemService.updateItem(this.id, item).subscribe(
         data => {
+          this.toastr.info('產品: ' + item.brandName + ' 已修改', '修改成功');
           this.router.navigate(['/']);
         },
         error => {
+          this.toastr.error('發生錯誤', '錯誤');
           console.log(error);
         }
       );

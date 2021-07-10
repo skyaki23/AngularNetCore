@@ -1,5 +1,6 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Item } from 'src/app/interfaces/Item';
 import { ItemService } from 'src/app/services/item.service';
 
@@ -12,7 +13,8 @@ export class ListItemsComponent implements OnInit {
 
   listItems: Item[] = [];
 
-  constructor(private _itemService: ItemService) { }
+  constructor(private _itemService: ItemService,
+              private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.getItems();
@@ -24,6 +26,7 @@ export class ListItemsComponent implements OnInit {
         this.listItems = data;
       },
       error => {
+        this.toastr.error('發生錯誤', '錯誤');
         console.log(error);
       }
     );
@@ -33,8 +36,10 @@ export class ListItemsComponent implements OnInit {
     this._itemService.deleteItem(id).subscribe(
       data => {
         this.getItems();
+        this.toastr.error('產品代碼: ' + id + ' 已刪除', '刪除成功');
       },
       error => {
+        this.toastr.error('發生錯誤', '錯誤');
         console.log(error);
       }
     );
