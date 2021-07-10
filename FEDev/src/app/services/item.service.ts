@@ -19,4 +19,8 @@ export class ItemService {
   deleteItem(id: number): Observable<any> {
     return this.http.delete(this.baseURL + this.baseApiURL + id);
   }
+
+  getItem(id: number): Observable<any> {
+    return this.http.get(this.baseURL + this.baseApiURL + id);
+  }
 }

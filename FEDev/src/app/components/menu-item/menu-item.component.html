@@ -1,1 +1,9 @@
-<p>menu-item works!</p>
+<div *ngIf="item !== undefined" style="text-align: center;">
+    <h3 style="margin-top: 30px;">{{ item.brandName }}</h3>
+    <h5>處理器: {{ item.processor }}</h5>
+    <h5>記憶體: {{ item.mainMemory }}</h5>
+    <h5>硬碟: {{ item.hardDrive }}</h5>
+    <h5>顯示卡: {{ item.graphicsCard }}</h5>
+    <h5>螢幕尺寸: {{ item.screenSize }}</h5>
+    <h5>價錢: {{ item.price }}</h5>
+</div>

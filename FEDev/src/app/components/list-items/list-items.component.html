@@ -23,7 +23,9 @@
     </thead>
     <tbody>
         <tr *ngFor="let item of listItems">
-            <td>{{ item.brandName }}</td>
+            <td>
+                <a [routerLink]="['/menu', item.id]">{{ item.brandName }}</a>
+            </td>
             <td>{{ item.processor }}</td>
             <td>{{ item.mainMemory }}</td>
             <td>{{ item.hardDrive }}</td>
