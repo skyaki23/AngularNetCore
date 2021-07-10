@@ -33,7 +33,7 @@
             <td>{{ item.screenSize }}</td>
             <td>{{ item.price }}</td>
             <td style="width: 5%;">
-                <button class="btn btn-primary btn-sm float-end">修改</button>
+                <button [routerLink]="['/update', item.id]" class="btn btn-primary btn-sm float-end">修改</button>
             </td>
             <td style="width: 5%;">
                 <button (click)="deleteItem(item.id)" class="btn btn-danger btn-sm float-end">刪除</button>

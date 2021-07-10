@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Item } from 'src/app/interfaces/Item';
 import { ItemService } from 'src/app/services/item.service';
 
@@ -12,10 +12,14 @@ import { ItemService } from 'src/app/services/item.service';
 export class CreateUpdateItemComponent implements OnInit {
 
   createItem: FormGroup;
+  action = '新增產品';
+  id = 0;
+  item: Item | undefined;
 
   constructor(private fb: FormBuilder,
               private _itemService: ItemService,
-              private router: Router) {
+              private router: Router,
+              private aRoute: ActivatedRoute) {
     this.createItem = this.fb.group({
       brandName: ['', Validators.required],
       processor: ['', Validators.required],
@@ -25,9 +29,12 @@ export class CreateUpdateItemComponent implements OnInit {
       screenSize: ['', Validators.required],
       price: ['', Validators.required]
     });
+
+    this.id = +this.aRoute.snapshot.paramMap.get('id')!;
   }
 
   ngOnInit(): void {
+    this.update();
   }
 
   create() {
@@ -49,5 +56,27 @@ export class CreateUpdateItemComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  update() {
+    if (this.id !== 0) {
+      this.action = '修改產品';
+      this._itemService.getItem(this.id).subscribe(
+        data => {
+          this.createItem.patchValue({
+            brandName: data.brandName,
+            processor: data.processor,
+            mainMemory: data.mainMemory,
+            hardDrive: data.hardDrive,
+            graphicsCard: data.graphicsCard,
+            screenSize: data.screenSize,
+            price: data.price
+          });
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    }
   }
 }
