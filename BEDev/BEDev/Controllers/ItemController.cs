@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,11 +13,26 @@ namespace BEDev.Controllers
     [ApiController]
     public class ItemController : ControllerBase
     {
+        private readonly ItemDbContext _context;
+
+        public ItemController(ItemDbContext context)
+        {
+            this._context = context;
+        }
+
         // GET: api/<ItemController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> Get()
         {
-            return new string[] { "value1", "value2" };
+            try
+            {
+                var listItems = await _context.Item.ToListAsync();
+                return Ok(listItems);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // GET api/<ItemController>/5
