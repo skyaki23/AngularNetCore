@@ -1,5 +1,6 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { Item } from 'src/app/interfaces/Item';
 import { ItemService } from 'src/app/services/item.service';
@@ -12,6 +13,8 @@ import { ItemService } from 'src/app/services/item.service';
 export class ListItemsComponent implements OnInit {
 
   listItems: Item[] = [];
+  dataSource: MatTableDataSource<Item> = new MatTableDataSource();
+  columns: string[] = ['brandName', 'processor', 'mainMemory', 'hardDrive', 'graphicsCard', 'screenSize', 'price', 'update', 'delete'];
 
   constructor(private _itemService: ItemService,
               private toastr: ToastrService) { }
@@ -24,6 +27,7 @@ export class ListItemsComponent implements OnInit {
     this._itemService.getListItems().subscribe(
       data => {
         this.listItems = data;
+        this.dataSource = new MatTableDataSource(this.listItems);
       },
       error => {
         this.toastr.error('發生錯誤', '錯誤');

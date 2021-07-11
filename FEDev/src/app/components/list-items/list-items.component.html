@@ -7,40 +7,63 @@
     </div>
 </div>
 
-<table *ngIf="listItems.length > 0" class="table table-hover mt-3">
-    <thead>
-        <tr>
-            <td>廠牌名稱</td>
-            <td>處理器</td>
-            <td>記憶體</td>
-            <td>硬碟</td>
-            <td>顯示卡</td>
-            <td>螢幕尺寸</td>
-            <td>價錢</td>
-            <td></td>
-            <td></td>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let item of listItems">
-            <td>
-                <a [routerLink]="['/menu', item.id]">{{ item.brandName }}</a>
+<div *ngIf="listItems.length > 0">
+    <table mat-table [dataSource]="dataSource" class="table table-bordered border-secondary table-dark table-striped table-hover mt-3">
+        <ng-container matColumnDef="brandName">
+            <th mat-header-cell *matHeaderCellDef>廠牌</th>
+            <td mat-cell *matCellDef="let row">
+                <a [routerLink]="['/menu', row.id]">{{ row.brandName }}</a>
             </td>
-            <td>{{ item.processor }}</td>
-            <td>{{ item.mainMemory }}</td>
-            <td>{{ item.hardDrive }}</td>
-            <td>{{ item.graphicsCard }}</td>
-            <td>{{ item.screenSize }}</td>
-            <td>{{ item.price }}</td>
-            <td style="width: 5%;">
-                <button [routerLink]="['/update', item.id]" class="btn btn-primary btn-sm float-end">修改</button>
+        </ng-container>
+
+        <ng-container matColumnDef="processor">
+            <th mat-header-cell *matHeaderCellDef>處理器</th>
+            <td mat-cell *matCellDef="let row">{{ row.processor }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="mainMemory">
+            <th mat-header-cell *matHeaderCellDef>記憶體</th>
+            <td mat-cell *matCellDef="let row">{{ row.mainMemory }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="hardDrive">
+            <th mat-header-cell *matHeaderCellDef>硬碟</th>
+            <td mat-cell *matCellDef="let row">{{ row.hardDrive }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="graphicsCard">
+            <th mat-header-cell *matHeaderCellDef>顯示卡</th>
+            <td mat-cell *matCellDef="let row">{{ row.graphicsCard }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="screenSize">
+            <th mat-header-cell *matHeaderCellDef>螢幕尺寸</th>
+            <td mat-cell *matCellDef="let row">{{ row.screenSize }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+            <th mat-header-cell *matHeaderCellDef>價錢</th>
+            <td mat-cell *matCellDef="let row">{{ row.price }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="update">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let row">
+                <button [routerLink]="['/update', row.id]" class="btn btn-primary btn-sm">修改</button>
             </td>
-            <td style="width: 5%;">
-                <button (click)="deleteItem(item.id)" class="btn btn-danger btn-sm float-end">刪除</button>
+        </ng-container>
+        
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let row" style="padding-right: 8px;">
+                <button (click)="deleteItem(row.id)" class="btn btn-danger btn-sm">刪除</button>
             </td>
-        </tr>
-    </tbody>
-</table>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+    </table>
+</div>
 
 <div *ngIf="listItems.length == 0" class="row mt-5">
     <h5>尚無建立產品資料</h5>

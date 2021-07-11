@@ -1,0 +1,17 @@
+.table a {
+  color: ivory;
+  text-decoration: none;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-cell {
+    padding: 8px 8px 8px 8px;
+  }
+
+th, td {
+  text-align: center !important;
+  vertical-align: middle !important;
+}

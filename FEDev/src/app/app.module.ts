@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { MatTableModule } from '@angular/material/table';
 
 // Component
 import { AppComponent } from './app.component';
@@ -13,7 +14,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { CreateUpdateItemComponent } from './components/create-update-item/create-update-item.component';
 import { ListItemsComponent } from './components/list-items/list-items.component';
 import { MenuItemComponent } from './components/menu-item/menu-item.component';
-
 
 @NgModule({
   declarations: [
@@ -30,7 +30,8 @@ import { MenuItemComponent } from './components/menu-item/menu-item.component';
     HttpClientModule,
     CommonModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
