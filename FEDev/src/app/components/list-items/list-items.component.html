@@ -8,6 +8,11 @@
 </div>
 
 <div *ngIf="listItems.length > 0">
+    <mat-form-field>
+        <mat-label>查詢</mat-label>
+        <input matInput placeholder="..." (keyup)="applyFilter($event)">
+    </mat-form-field>
+
     <table mat-table [dataSource]="dataSource" matSort class="table table-bordered border-secondary table-dark table-striped table-hover mt-3">
         <ng-container matColumnDef="brandName">
             <th mat-header-cell *matHeaderCellDef mat-sort-header class="hide-arrow">廠牌</th>
@@ -58,7 +63,7 @@
         <tr mat-row *matRowDef="let row; columns: columns;"></tr>
     </table>
 
-    <mat-paginator [length]="listItems.length" [pageSize]="10">
+    <mat-paginator [length]="listItems.length" [pageSize]="10" [pageSizeOptions]="[1, 5, 10, 25, 100]">
     </mat-paginator>
 </div>
 

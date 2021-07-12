@@ -9,6 +9,8 @@ table {
 th, td {
   text-align: center !important;
   vertical-align: middle !important;
+  font-size: 16px;
+  color: #fff;
 }
 
 .mat-cell.mat-column-brandName {
@@ -41,4 +43,8 @@ th, td {
 ::ng-deep .hide-arrow .mat-sort-header-pointer-right {
   width: 0px;
   height: 0px;
+}
+
+.mat-form-field {
+  width: 100%;
 }
