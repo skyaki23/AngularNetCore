@@ -14,7 +14,7 @@ export class ListItemsComponent implements OnInit {
 
   listItems: Item[] = [];
   dataSource: MatTableDataSource<Item> = new MatTableDataSource();
-  columns: string[] = ['brandName', 'processor', 'mainMemory', 'hardDrive', 'graphicsCard', 'screenSize', 'price', 'update', 'delete'];
+  columns: string[] = ['brandName', 'processor', 'mainMemory', 'hardDrive', 'graphicsCard', 'screenSize', 'price', 'action'];
 
   constructor(private _itemService: ItemService,
               private toastr: ToastrService) { }
