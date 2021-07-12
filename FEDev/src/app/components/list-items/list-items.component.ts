@@ -1,5 +1,6 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
@@ -19,6 +20,10 @@ export class ListItemsComponent implements OnInit {
 
   @ViewChild(MatSort, { static: false }) set matSort(sort: MatSort) {
     this.dataSource.sort = sort;
+  }
+
+  @ViewChild(MatPaginator, { static: false }) set matPaginator(paginator: MatPaginator) {
+    this.dataSource.paginator = paginator;
   }
 
   constructor(private _itemService: ItemService,

@@ -3,8 +3,8 @@ table {
 }
 
 .mat-cell {
-    padding: 8px 8px 8px 8px;
-  }
+  padding: 8px 8px 8px 8px;
+}
 
 th, td {
   text-align: center !important;
@@ -19,14 +19,14 @@ th, td {
 }
 
 ::ng-deep .mat-sort-header-container {
-  display:flex;
-  justify-content:center;
+  display: flex;
+  justify-content: center;
 }
 
 ::ng-deep .hide-arrow .mat-sort-header-arrow {
   color: #212529; /* 同th color */
-  display:flex;
-  justify-content:center;
+  display: flex;
+  justify-content: center;
   margin: 0 0 0 0px;
   height: 0px;
   width: 0px;

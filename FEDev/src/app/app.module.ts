@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 // Component
 import { AppComponent } from './app.component';
@@ -33,7 +34,8 @@ import { MenuItemComponent } from './components/menu-item/menu-item.component';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
