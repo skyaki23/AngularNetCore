@@ -8,41 +8,41 @@
 </div>
 
 <div *ngIf="listItems.length > 0">
-    <table mat-table [dataSource]="dataSource" class="table table-bordered border-secondary table-dark table-striped table-hover mt-3">
+    <table mat-table [dataSource]="dataSource" matSort class="table table-bordered border-secondary table-dark table-striped table-hover mt-3">
         <ng-container matColumnDef="brandName">
-            <th mat-header-cell *matHeaderCellDef>廠牌</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="hide-arrow">廠牌</th>
             <td mat-cell *matCellDef="let row" [routerLink]="['/menu', row.id]">
                 {{ row.brandName }}
             </td>
         </ng-container>
 
         <ng-container matColumnDef="processor">
-            <th mat-header-cell *matHeaderCellDef>處理器</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="hide-arrow">處理器</th>
             <td mat-cell *matCellDef="let row">{{ row.processor }}</td>
         </ng-container>
 
         <ng-container matColumnDef="mainMemory">
-            <th mat-header-cell *matHeaderCellDef>記憶體</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="hide-arrow">記憶體</th>
             <td mat-cell *matCellDef="let row">{{ row.mainMemory }}</td>
         </ng-container>
 
         <ng-container matColumnDef="hardDrive">
-            <th mat-header-cell *matHeaderCellDef>硬碟</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="hide-arrow">硬碟</th>
             <td mat-cell *matCellDef="let row">{{ row.hardDrive }}</td>
         </ng-container>
 
         <ng-container matColumnDef="graphicsCard">
-            <th mat-header-cell *matHeaderCellDef>顯示卡</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="hide-arrow">顯示卡</th>
             <td mat-cell *matCellDef="let row">{{ row.graphicsCard }}</td>
         </ng-container>
 
         <ng-container matColumnDef="screenSize">
-            <th mat-header-cell *matHeaderCellDef>螢幕尺寸</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="hide-arrow">螢幕尺寸</th>
             <td mat-cell *matCellDef="let row">{{ row.screenSize }}</td>
         </ng-container>
 
         <ng-container matColumnDef="price">
-            <th mat-header-cell *matHeaderCellDef>價錢</th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header class="hide-arrow">價錢</th>
             <td mat-cell *matCellDef="let row">{{ row.price }}</td>
         </ng-container>
 
@@ -54,7 +54,6 @@
             </td>
         </ng-container>
         
-
         <tr mat-header-row *matHeaderRowDef="columns"></tr>
         <tr mat-row *matRowDef="let row; columns: columns;"></tr>
     </table>

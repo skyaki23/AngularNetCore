@@ -17,3 +17,28 @@ th, td {
   font-weight: bold;
   cursor: pointer;
 }
+
+::ng-deep .mat-sort-header-container {
+  display:flex;
+  justify-content:center;
+}
+
+::ng-deep .hide-arrow .mat-sort-header-arrow {
+  color: #212529; /* 同th color */
+  display:flex;
+  justify-content:center;
+  margin: 0 0 0 0px;
+  height: 0px;
+  width: 0px;
+  min-width: 0px;
+}
+
+::ng-deep .hide-arrow .mat-sort-header-pointer-left {
+  width: 0px;
+  height: 0px;
+}
+
+::ng-deep .hide-arrow .mat-sort-header-pointer-right {
+  width: 0px;
+  height: 0px;
+}

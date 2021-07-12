@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 // Component
 import { AppComponent } from './app.component';
@@ -31,7 +32,8 @@ import { MenuItemComponent } from './components/menu-item/menu-item.component';
     CommonModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    MatTableModule
+    MatTableModule,
+    MatSortModule
   ],
   providers: [],
   bootstrap: [AppComponent]

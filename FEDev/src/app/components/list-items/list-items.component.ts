@@ -1,5 +1,6 @@
 import { ThrowStmt } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { Item } from 'src/app/interfaces/Item';
@@ -15,6 +16,10 @@ export class ListItemsComponent implements OnInit {
   listItems: Item[] = [];
   dataSource: MatTableDataSource<Item> = new MatTableDataSource();
   columns: string[] = ['brandName', 'processor', 'mainMemory', 'hardDrive', 'graphicsCard', 'screenSize', 'price', 'action'];
+
+  @ViewChild(MatSort, { static: false }) set matSort(sort: MatSort) {
+    this.dataSource.sort = sort;
+  }
 
   constructor(private _itemService: ItemService,
               private toastr: ToastrService) { }
