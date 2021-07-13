@@ -52,7 +52,9 @@
         </ng-container>
 
         <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef></th>
+            <th mat-header-cell *matHeaderCellDef style="padding: 12px 12px;">
+                <button (click)="xlsxExport()" class="btn btn-info btn-sm" style="color: #fff;">資料匯出</button>
+            </th>
             <td mat-cell *matCellDef="let row" style="padding-right: 8px;">
                 <button [routerLink]="['/update', row.id]" class="btn btn-primary btn-sm">修改</button>
                 <button (click)="deleteItem(row.id)" class="btn btn-danger btn-sm" style="margin-left: 8px;">刪除</button>

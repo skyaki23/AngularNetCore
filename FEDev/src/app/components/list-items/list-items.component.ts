@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { Item } from 'src/app/interfaces/Item';
 import { ItemService } from 'src/app/services/item.service';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-list-items',
@@ -64,4 +65,11 @@ export class ListItemsComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  xlsxExport() {
+    const ws: XLSX.WorkSheet = XLSX.utils.json_to_sheet(this.listItems);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    const xlsxName = 'NBData.xlsx';
+    XLSX.utils.book_append_sheet(wb, ws, xlsxName);
+    XLSX.writeFile(wb, xlsxName);
+  }
 }
