@@ -8,10 +8,15 @@
 </div>
 
 <div *ngIf="listItems.length > 0">
-    <mat-form-field>
+    <mat-form-field class="mt-3">
         <mat-label>查詢</mat-label>
         <input matInput placeholder="..." (keyup)="applyFilter($event)">
     </mat-form-field>
+
+    <div>
+        <npn-slider class="npn-slider" [min]="minPrice" [max]="maxPrice" [step]="stepValue" [showStepIndicator]="true" (onChange)="onSliderChange($event)"></npn-slider>
+        <p style="float: right; font-size: 16px; margin: 20px;">價錢範圍: {{ currentPrices | json }}</p>
+    </div>
 
     <table mat-table [dataSource]="dataSource" matSort class="table table-bordered border-secondary table-dark table-striped table-hover mt-3">
         <ng-container matColumnDef="brandName">

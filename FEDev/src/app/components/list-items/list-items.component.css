@@ -48,3 +48,49 @@ th, td {
 .mat-form-field {
   width: 100%;
 }
+
+.npn-slider::ng-deep .slider {
+  padding-left: 50% !important;
+}
+
+.npn-slider::ng-deep .slider .bar > span.left-handle {
+  background: #dcb2b2 !important;
+  border: 7px solid #b35a57 !important;
+}
+
+.npn-slider::ng-deep .slider .bar > span.right-handle {
+  background: #dcb2b2 !important;
+  border: 7px solid #b35a57 !important;
+}
+
+.npn-slider::ng-deep .slider .bar div.filler > span {
+  background: #dcb2b2 !important;
+}
+
+.npn-slider::ng-deep .slider .bar > span.left-handle .handle-tooltip {
+  color: #b35757 !important;
+  background: #ebd2d2 !important;
+  border: 1px solid #c37a7a !important;
+}
+
+.npn-slider::ng-deep .slider .bar > span.left-handle .handle-tooltip:after {
+  border-top-color: #ebd2d2 !important;
+}
+
+.npn-slider::ng-deep .slider .bar > span.right-handle .handle-tooltip {
+  color: #b35757 !important;
+  background: #ebd2d2 !important;
+  border: 1px solid #c37a7a !important;
+}
+
+.npn-slider::ng-deep .slider .bar > span.right-handle .handle-tooltip:after {
+  border-top-color: #ebd2d2 !important;
+}
+
+.npn-slider::ng-deep .slider .bar div.filler > div.step-indicators > span {
+  background: #b35757 !important;
+}
+
+.npn-slider::ng-deep .values > span {
+  font-size: 16px;
+}

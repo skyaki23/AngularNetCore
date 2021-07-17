@@ -32,4 +32,8 @@ export class ItemService {
   updateItem(id: number, item: Item): Observable<any> {
     return this.http.put(this.baseURL + this.baseApiURL + id, item);
   }
+
+  getItemMinMaxPrice(): Observable<any> {
+    return this.http.get(this.baseURL + this.baseApiURL + 'GetItemMinMaxPrice');
+  }
 }

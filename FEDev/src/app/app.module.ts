@@ -11,6 +11,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { NpnSliderModule } from 'npn-slider';
+
 
 // Component
 import { AppComponent } from './app.component';
@@ -39,7 +41,8 @@ import { MenuItemComponent } from './components/menu-item/menu-item.component';
     MatSortModule,
     MatPaginatorModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    NpnSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

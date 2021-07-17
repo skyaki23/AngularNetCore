@@ -16,6 +16,7 @@ import * as XLSX from 'xlsx';
 export class ListItemsComponent implements OnInit {
 
   listItems: Item[] = [];
+  listItems_default: Item[] = [];
   dataSource: MatTableDataSource<Item> = new MatTableDataSource();
   columns: string[] = ['brandName', 'processor', 'mainMemory', 'hardDrive', 'graphicsCard', 'screenSize', 'price', 'action'];
 
@@ -27,10 +28,16 @@ export class ListItemsComponent implements OnInit {
     this.dataSource.paginator = paginator;
   }
 
+  minPrice = 0;
+  maxPrice = 0;
+  stepValue = 1000;
+  currentPrices = [this.minPrice, this.maxPrice];
+
   constructor(private _itemService: ItemService,
               private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.setSliderRange();
     this.getItems();
   }
 
@@ -38,7 +45,8 @@ export class ListItemsComponent implements OnInit {
     this._itemService.getListItems().subscribe(
       data => {
         this.listItems = data;
-        this.dataSource = new MatTableDataSource(this.listItems);
+        this.listItems_default = data;
+        this.dataSource = new MatTableDataSource(this.listItems_default);
       },
       error => {
         this.toastr.error('發生錯誤', '錯誤');
@@ -71,5 +79,27 @@ export class ListItemsComponent implements OnInit {
     const xlsxName = 'NBData.xlsx';
     XLSX.utils.book_append_sheet(wb, ws, xlsxName);
     XLSX.writeFile(wb, xlsxName);
+  }
+
+  setSliderRange() {
+    this._itemService.getItemMinMaxPrice().subscribe(
+      data => {
+        this.minPrice = data[0];
+        this.maxPrice = data[1];
+        this.currentPrices = [this.minPrice, this.maxPrice];
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  onSliderChange(selectedValues: number[]) {
+    this.currentPrices = selectedValues;
+
+    this.listItems = this.listItems_default.filter(item => 
+      (item.price as number) >= this.currentPrices[0] && (item.price as number) <= this.currentPrices[1]);
+    
+    this.dataSource = new MatTableDataSource(this.listItems);
   }
 }

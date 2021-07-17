@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -115,6 +116,25 @@ namespace BEDev.Controllers
             catch (Exception ex)
             {
                 return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("GetItemMinMaxPrice/")]
+        public async Task<int[]> GetItemMinMaxPrice()
+        {
+            try
+            {
+                var listItems = await _context.Item.ToListAsync();
+                int minPrice = listItems.Count > 0 ? 
+                               listItems.Min(x => x.Price) : 0; // Item Price min value
+                int maxPrice = listItems.Count > 0 ?
+                               listItems.Max(x => x.Price) : 0; // Item Price max value
+
+                return new int[] { minPrice, maxPrice };
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
     }
