@@ -20,12 +20,16 @@ export class ListItemsComponent implements OnInit {
   dataSource: MatTableDataSource<Item> = new MatTableDataSource();
   columns: string[] = ['brandName', 'processor', 'mainMemory', 'hardDrive', 'graphicsCard', 'screenSize', 'price', 'action'];
 
+  _sort?: MatSort;
   @ViewChild(MatSort, { static: false }) set matSort(sort: MatSort) {
     this.dataSource.sort = sort;
+    this._sort = sort;
   }
 
+  _paginator?: MatPaginator;
   @ViewChild(MatPaginator, { static: false }) set matPaginator(paginator: MatPaginator) {
     this.dataSource.paginator = paginator;
+    this._paginator = paginator;
   }
 
   minPrice = 0;
@@ -47,6 +51,8 @@ export class ListItemsComponent implements OnInit {
         this.listItems = data;
         this.listItems_default = data;
         this.dataSource = new MatTableDataSource(this.listItems_default);
+        this.dataSource.sort = (this._sort as MatSort);
+        this.dataSource.paginator = (this._paginator as MatPaginator);
       },
       error => {
         this.toastr.error('發生錯誤', '錯誤');
@@ -101,5 +107,7 @@ export class ListItemsComponent implements OnInit {
       (item.price as number) >= this.currentPrices[0] && (item.price as number) <= this.currentPrices[1]);
     
     this.dataSource = new MatTableDataSource(this.listItems);
+    this.dataSource.sort = (this._sort as MatSort);
+    this.dataSource.paginator = (this._paginator as MatPaginator);
   }
 }

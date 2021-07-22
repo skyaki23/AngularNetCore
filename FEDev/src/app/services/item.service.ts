@@ -8,7 +8,8 @@ import { Item } from '../interfaces/Item';
 })
 export class ItemService {
 
-  private baseURL = 'https://localhost:44346/';
+  //private baseURL = 'https://localhost:44346/';
+  private baseURL = 'https://bedev20210719220937.azurewebsites.net/';
   private baseApiURL = 'api/item/';
 
   constructor(private http: HttpClient) { }
