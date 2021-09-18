@@ -12,7 +12,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NpnSliderModule } from 'npn-slider';
-
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
 
 // Component
 import { AppComponent } from './app.component';
@@ -42,7 +43,9 @@ import { MenuItemComponent } from './components/menu-item/menu-item.component';
     MatPaginatorModule,
     MatInputModule,
     MatFormFieldModule,
-    NpnSliderModule
+    NpnSliderModule,
+    MatChipsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

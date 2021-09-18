@@ -7,6 +7,8 @@ import { ToastrService } from 'ngx-toastr';
 import { Item } from 'src/app/interfaces/Item';
 import { ItemService } from 'src/app/services/item.service';
 import * as XLSX from 'xlsx';
+import { ENTER, COMMA } from '@angular/cdk/keycodes';
+import { MatChipInputEvent } from '@angular/material/chips';
 
 @Component({
   selector: 'app-list-items',
@@ -18,6 +20,7 @@ export class ListItemsComponent implements OnInit {
   listItems: Item[] = [];
   listItems_default: Item[] = [];
   dataSource: MatTableDataSource<Item> = new MatTableDataSource();
+  
   columns: string[] = ['brandName', 'processor', 'mainMemory', 'hardDrive', 'graphicsCard', 'screenSize', 'price', 'action'];
 
   _sort?: MatSort;
@@ -36,6 +39,9 @@ export class ListItemsComponent implements OnInit {
   maxPrice = 0;
   stepValue = 1000;
   currentPrices = [this.minPrice, this.maxPrice];
+
+  keyWords: string[] = [];
+  separatorKeysCodes = [ENTER, COMMA];
 
   constructor(private _itemService: ItemService,
               private toastr: ToastrService) { }
@@ -74,9 +80,23 @@ export class ListItemsComponent implements OnInit {
     );
   }
 
-  applyFilter(event: any) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  applyFilter() {
+    //const filterValue = (event.target as HTMLInputElement).value;
+    //this.dataSource.filter = filterValue.trim();
+
+    this.listItems = this.listItems_default.filter(item => 
+      (item.price as number) >= this.currentPrices[0] && (item.price as number) <= this.currentPrices[1]);
+
+    const dataSoruceTemp = new MatTableDataSource<Item>(this.listItems);
+    for (var keyWord of this.keyWords) {
+      dataSoruceTemp.filter = keyWord.trim();
+      const dataSourceInsidTemp = new MatTableDataSource<Item>(dataSoruceTemp.filteredData);
+      dataSoruceTemp.data = dataSourceInsidTemp.data;
+      dataSoruceTemp.filteredData = dataSourceInsidTemp.filteredData;
+    }
+
+    this.dataSource.data = dataSoruceTemp.data;
+    this.dataSource.filteredData = dataSoruceTemp.filteredData;
   }
 
   xlsxExport() {
@@ -106,8 +126,35 @@ export class ListItemsComponent implements OnInit {
     this.listItems = this.listItems_default.filter(item => 
       (item.price as number) >= this.currentPrices[0] && (item.price as number) <= this.currentPrices[1]);
     
-    this.dataSource = new MatTableDataSource(this.listItems);
-    this.dataSource.sort = (this._sort as MatSort);
-    this.dataSource.paginator = (this._paginator as MatPaginator);
+      const dataSoruceTemp = new MatTableDataSource<Item>(this.listItems);
+      for (var keyWord of this.keyWords) {
+        dataSoruceTemp.filter = keyWord.trim();
+        const dataSourceInsidTemp = new MatTableDataSource<Item>(dataSoruceTemp.filteredData);
+        dataSoruceTemp.data = dataSourceInsidTemp.data;
+        dataSoruceTemp.filteredData = dataSourceInsidTemp.filteredData;
+      }
+  
+      this.dataSource.data = dataSoruceTemp.data;
+      this.dataSource.filteredData = dataSoruceTemp.filteredData;
+  }
+
+  removeKeyWord(removeKeyWord: string) {
+    const index = this.keyWords.indexOf(removeKeyWord, 0);
+    if (index > -1) {
+      this.keyWords.splice(index, 1);
+    }
+
+    this.applyFilter();
+  }
+
+  addKeyWord($event: MatChipInputEvent) {
+    if (($event.value || '').trim()) {
+      this.keyWords = [...this.keyWords, $event.value.trim()];
+    }
+
+    $event.value = '';
+    $event.input.value = '';
+
+    this.applyFilter();
   }
 }
