@@ -1,7 +1,7 @@
 # Angular & ASP.NET Core Web API 練習作品 - 筆電產品列表
 
 * 利用前端框架Angular以及後端.NET Core Web API技術所製作該作品。
-* 資料為非營利、非商業用途所使用，為個人學習技術所使用。
+* 資料為非營利、非商業用途所使用，僅為個人學習技術所使用。
 
 ## 網站連結
 * https://nbitemfedev.azurewebsites.net/
