@@ -21,17 +21,16 @@
 * github
 
 ### 作品介紹
-* 顯示存在的筆電產品資料
-* 筆電產品資料可依照價錢範圍、搜尋關鍵字做篩選
-* 點選標頭可做排序
-* 建立新產品、修改及刪除產品資料
-* 點選產品廠牌名稱資料至另一頁面呈現
-* 點選標頭的資料匯出可將所有筆電產品資料下載成Excel檔案
-
-[Imgur](https://i.imgur.com/Jv5nUla.png)
-[Imgur](https://i.imgur.com/6IYkrS5.png)
-[Imgur](https://i.imgur.com/5Ewn1Cu.png)
-[Imgur](https://i.imgur.com/AZpRwu2.png)
-[Imgur](https://i.imgur.com/Oh4puv6.png)
-[Imgur](https://i.imgur.com/GQBrSKX.png)
+* 1.顯示存在的筆電產品資料
+* 2.點選標頭可做排序
+![Imgur](https://i.imgur.com/Jv5nUla.png)
+* 3.筆電產品資料可依照價錢範圍、搜尋關鍵字做篩選
+![Imgur](https://i.imgur.com/6IYkrS5.png)
+![Imgur](https://i.imgur.com/5Ewn1Cu.png)
+* 4.建立新產品、修改及刪除產品資料
+![Imgur](https://i.imgur.com/AZpRwu2.png)
+* 5.點選產品廠牌名稱資料至另一頁面呈現
+![Imgur](https://i.imgur.com/Oh4puv6.png)
+* 6.點選標頭的資料匯出可將所有筆電產品資料下載成Excel檔案
+![Imgur](https://i.imgur.com/GQBrSKX.png)
 ---
